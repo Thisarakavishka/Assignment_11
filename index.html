@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Point Of Sale</title>
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <ul class="nav nav-underline align-content-lg-start">
+                <a class="navbar-brand" href="#">
+                    <!-- need to add logo for POS system -->
+                    WEBSITE LOGO
+                </a>
+                <li class="nav-item">
+                    <a id="home" class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a id="order" class="nav-link" href="#">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a id="item" class="nav-link" href="#">Items</a>
+                </li>
+                <li class="nav-item">
+                    <a id="customer" class="nav-link" href="#">Customers</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Home section -->
+<section id="home-section" class="container">
+    <div class="d-flex justify-content-center column-gap-5 mt-5">
+        <div class="label-card col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+            <h1>Orders</h1>
+            <h1>324</h1>
+        </div>
+
+        <div class="label-card col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+            <h1>Customers</h1>
+            <h1>89</h1>
+        </div>
+
+        <div class="label-card col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
+            <h1>Items</h1>
+            <h1>504</h1>
+        </div>
+    </div>
+</section>
+
+<!-- Order section -->
+<section id="order-section" class="container">
+    <div class="content row">
+        <div class="d-flex column-gap-3 col col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="input-card">
+                <div class=" input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Order..." id="orderSearch">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+                <hr>
+                <div>
+                    <label for="orderId" class="form-label">Order Id</label>
+                    <input type="number" class="form-control" id="orderId">
+                </div>
+                <div>
+                    <label for="orderCustomerId" class="form-label">Customer Name</label>
+                    <select type="form-select" class="form-control" id="orderCustomerId">
+                        <option>0001</option>
+                        <option>0002</option>
+                        <option>0003</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="orderCustomerName" class="form-label">Customer Name</label>
+                    <input type="number" class="form-control" id="orderCustomerName">
+
+                </div>
+                <div>
+                    <label for="orderCustomerAddress" class="form-label">Address</label>
+                    <input type="number" class="form-control" id="orderCustomerAddress">
+                </div>
+                <div>
+                    <label for="customerSalary" class="form-label">Salary</label>
+                    <input type="number" class="form-control" id="customerSalary">
+                </div>
+            </div>
+
+            <div class="input-card">
+                <div class="text-center mb-3">
+                    <h3>Item</h3>
+                </div>
+                <hr>
+                <div>
+                    <label for="orderItemCode" class="form-label">Item Code</label>
+                    <input type="number" class="form-control" id="orderItemCode">
+                </div>
+                <div>
+                    <label for="orderItemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="orderItemName">
+                </div>
+                <div>
+                    <label for="orderItemPrice" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="orderItemPrice">
+                </div>
+                <div>
+                    <label for="orderItemQty" class="form-label">Qty</label>
+                    <input type="number" class="form-control" id="orderItemQty">
+                </div>
+                <dic class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-success" id="orderItemAdd">Add +</button>
+                </dic>
+            </div>
+
+            <div class="input-card">
+                <div class="text-center mb-3">
+                    <h3>Purchase</h3>
+                </div>
+                <hr>
+                <div>
+                    <label class="form-label mt-3 d-flex justify-content-center">
+                        <h5>Total -</h5>
+                    </label>
+                </div>
+                <div>
+                    <label for="orderCash" class="form-label">Cash</label>
+                    <input type="number" class="form-control" id="orderCash">
+                </div>
+                <div>
+                    <label for="orderDiscount" class="form-label">Discount</label>
+                    <input type="text" class="form-control" id="orderDiscount">
+                </div>
+                <dic class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-success" id="orderPurchase">Purchase</button>
+                </dic>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-card col col-lg-6 col-md-12 col-sm-12 col-12  flex-column align-items-end">
+            <div class="text-center mb-3">
+                <h3>Order Summery</h3>
+            </div>
+            <hr>
+            <table class="table table-striped text-center ">
+                <thead>
+                <tr>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty</th>
+                </tr>
+                </thead>
+                <tbody id="orderItem-tbl-body">
+                <tr>
+                    <td>0001</td>
+                    <td>kavishka</td>
+                    <td>5000</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>kavishka</td>
+                    <td>5000</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>kavishka</td>
+                    <td>5000</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>kavishka</td>
+                    <td>5000</td>
+                    <td>200</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row p-3 flex-column align-content-center">
+        <!-- Table -->
+        <div class="table-card col col-lg-6 col-md-12 col-sm-12 col-12   align-items-end">
+            <div class="text-center mb-3">
+                <h3>Order History</h3>
+            </div>
+            <hr>
+            <table class="table table-striped text-center ">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Cash</th>
+                    <th scope="col">Discount</th>
+                </tr>
+                </thead>
+                <tbody id="order-tbl-body">
+                <tr>
+                    <td>0001</td>
+                    <td>2023-08-19</td>
+                    <td>kavishka</td>
+                    <td>8000</td>
+                    <td>10000</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>0002</td>
+                    <td>2023-08-19</td>
+                    <td>kavishka</td>
+                    <td>8000</td>
+                    <td>10000</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>0003</td>
+                    <td>2023-08-19</td>
+                    <td>kavishka</td>
+                    <td>8000</td>
+                    <td>10000</td>
+                    <td>200</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Item section -->
+<section id="item-section" class="container">
+    <div class="content row">
+        <div class=" col col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="input-card">
+                <div class=" input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Item..." id="itemSearch">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+                <hr>
+                <div>
+                    <label for="itemCode" class="form-label">Item Code</label>
+                    <input type="number" class="form-control" id="itemCode">
+                </div>
+                <div>
+                    <label for="itemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="itemName">
+                </div>
+                <div>
+                    <label for="itemPrice" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="itemPrice">
+                </div>
+                <div>
+                    <label for="itemQty" class="form-label">Qty</label>
+                    <input type="number" class="form-control" id="itemQty">
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-success" id="item_submit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="item_update">Update</button>
+                    <button type="button" class="btn btn-danger" id="item_delete">Delete</button>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-card col col-lg-6 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-end">
+            <table class="table table-striped text-center ">
+                <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty</th>
+                </tr>
+                </thead>
+                <tbody id="item-tbl-body">
+                <tr>
+                    <td>0001</td>
+                    <td>ari pods</td>
+                    <td>120000</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>ari pods</td>
+                    <td>120000</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>ari pods</td>
+                    <td>120000</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>0001</td>
+                    <td>ari pods</td>
+                    <td>120000</td>
+                    <td>30</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Customer section -->
+<section id="customer-section" class="container">
+    <div class="content row">
+        <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="input-card">
+                <div class=" input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Customer..." id="CustomersSearch">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+                <hr>
+                <div>
+                    <label for="customerId" class="form-label">Customer Id</label>
+                    <input type="number" class="form-control" id="customerId">
+                </div>
+                <div>
+                    <label for="customerName" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="customerName">
+                </div>
+                <div>
+                    <label for="customerAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="customerAddress">
+                </div>
+                <div>
+                    <label for="salary" class="form-label">Salary</label>
+                    <input type="number" class="form-control" id="salary">
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-success" id="order_submit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="customer_update">Update</button>
+                    <button type="button" class="btn btn-danger" id="customer_delete">Delete</button>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-card col col-lg-6 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-end">
+            <table class="table table-striped text-center ">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                </tr>
+                </thead>
+                <tbody id="customer-tbl-body">
+                <tr>
+                    <td>0001</td>
+                    <td>Thisara</td>
+                    <td>Moratuwa</td>
+                    <td>650000</td>
+                </tr>
+                <tr>
+                    <td>0002</td>
+                    <td>ushan</td>
+                    <td>Moratuwa</td>
+                    <td>650000</td>
+                </tr>
+                <tr>
+                    <td>0003</td>
+                    <td>kashmira</td>
+                    <td>Moratuwa</td>
+                    <td>650000</td>
+                </tr>
+                <tr>
+                    <td>0004</td>
+                    <td>perera</td>
+                    <td>Moratuwa</td>
+                    <td>650000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script src="assets/lib/jQuery/jquery.min.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
