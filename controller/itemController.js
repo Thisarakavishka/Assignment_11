@@ -5,22 +5,17 @@ window.onload = function () {
     $("#itemCode").val(generateNextId());
 }
 $("#item_submit").on('click', () => {
-    console.log("submit button");
     let itemCode = $("#itemCode").val();
     let itemName = $("#itemName").val();
     let itemPrice = $("#itemPrice").val();
     let itemQty = $("#itemQty").val();
 
-    console.log(itemCode);
-    console.log(itemName);
-    console.log(itemPrice);
-    console.log(itemQty);
-
     if (itemCode) {
         if (itemName) {
             if (itemPrice) {
                 if (itemQty) {
-                    var itemSubmit = new ItemModel(itemCode,
+                    var itemSubmit = new ItemModel(
+                        itemCode,
                         itemName,
                         itemPrice,
                         itemQty
@@ -42,12 +37,11 @@ $("#item_submit").on('click', () => {
             toastr.error('Invalid Item Name');
         }
     } else {
-        toastr.error('Invalid Item Name')
+        toastr.error('Invalid Item Code')
     }
 });
 
 $("#item_update").on('click', () => {
-    console.log("update button");
     var itemUpdate = new ItemModel(
         $("#itemCode").val(),
         $("#itemName").val(),
@@ -70,7 +64,7 @@ $("#item_delete").on('click', () => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Delete this!'
+        confirmButtonText: 'Delete this item!'
     }).then((result) => {
         if (result.isConfirmed) {
             var itemCode = $("#itemCode").val();
@@ -79,11 +73,9 @@ $("#item_delete").on('click', () => {
             loadData();
         }
     });
-    console.log("delete button");
 });
 
 $("button[type=reset]").on('click', () => {
-    console.log("reset button");
     $("#itemCode").val("");
     $("#itemName").val("");
     $("#itemPrice").val("");
