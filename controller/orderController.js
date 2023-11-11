@@ -4,6 +4,10 @@ import {customerDb} from "../db/db.js";
 import {orderDb} from "../db/db.js";
 import {ItemModel} from "../model/ItemModel.js";
 
+var itemArray = [];
+var total = 0;
+
+
 window.onload = function () {
     $("#orderId").val(generateNextId());
 }
@@ -100,14 +104,10 @@ $("#orderItemAdd").on("click", () => {
                         orderItemPrice,
                         orderItemQty
                     );
-                    let row = `<tr>
-                        <td>${orderItemCode}</td>
-                        <td>${orderItemName}</td>
-                        <td>${orderItemPrice}</td>
-                        <td>${orderItemQty}</td>
-                        </tr>`;
+                    itemArray.push(orderItem);
                     resetItemForm();
-                    $('#orderItem-tbl-body').append(row);
+                    loadItemTable();
+                    setTotal();
                     toastr.success('Item added Successfully')
                 } else {
                     toastr.error('Invalid Qty')
@@ -142,6 +142,58 @@ $("#orderItem-tbl-body").on("click", "tr", function () {
     $("#orderItemQty").val(item.itemQty);
 });
 
+$("#orderItemUpdate").on('click', () => {
+    var itemUpdate = new ItemModel(
+        $("#orderItemCode").val(),
+        $("#orderItemName").val(),
+        $("#orderItemPrice").val(),
+        $("#orderItemQty").val()
+    );
+    toastr.success('Item Update Successfully');
+
+    var index = itemArray.findIndex(item => item.itemCode === itemUpdate.itemCode);
+
+    itemArray[index] = itemUpdate;
+    loadItemTable();
+});
+
+$("#orderPurchase").on('click', () => {
+    var id = $("#orderCustomerId").val();
+    if (id.length > 0) {
+        if (itemArray.length > 0) {
+            let orderId = $("#orderId").val();
+            let customerName = $("#orderCustomerName").val();
+            let orderCash = $("#orderCash").val();
+            let orderDiscount = $("#orderDiscount").val();
+            let total = 200;
+            let date = new Date();
+            let formattedDate = new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            }).format(date);
+            console.log(formattedDate);
+            let order = new OrderModel(
+                orderId,
+                formattedDate,
+                customerName,
+                total,
+                orderCash,
+                orderDiscount
+            );
+
+            orderDb.push(order);
+            loadOrderData();
+            clearAll();
+        } else {
+            toastr.error('There is no items to make order')
+        }
+    } else {
+        toastr.error('Invalid Order id')
+    }
+
+});
+
 function loadOrderData() {
     $("#order-tbl-body").empty();
     orderDb.map((item, index) => {
@@ -157,6 +209,21 @@ function loadOrderData() {
     });
 
     $("#orderId").val(generateNextId());
+}
+
+function loadItemTable() {
+    $("#orderItem-tbl-body").empty();
+    itemArray.map((item, index) => {
+        let row = `<tr>
+                        <td>${item.itemCode}</td>
+                        <td>${item.itemName}</td>
+                        <td>${item.itemPrice}</td>
+                        <td>${item.itemQty}</td>
+                        </tr>`;
+        $('#orderItem-tbl-body').append(row);
+    });
+    $("#orderId").val(generateNextId());
+    setTotal();
 }
 
 function generateNextId() {
@@ -178,4 +245,21 @@ function resetItemForm() {
     $("#orderItemName").val("");
     $("#orderItemPrice").val("");
     $("#orderItemQty").val("");
+}
+
+function clearAll() {
+    $("#orderCustomerId").val("");
+    $("#orderCustomerName").val("");
+    $("#orderCustomerSalary").val("");
+    $("#orderCustomerAddress").val("");
+    $("#orderTotal").val("Total -");
+    $("#orderCash").val("");
+    $("#orderDiscount").val("");
+    $("#orderItem-tbl-body").empty();
+}
+
+function setTotal() {
+    itemArray.map((item, index) => {
+        total += item.itemPrice * item.itemQty;
+    });
 }

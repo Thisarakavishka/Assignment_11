@@ -70,20 +70,16 @@
                 </div>
                 <div>
                     <label for="orderCustomerId" class="form-label">Customer Id</label>
-                    <select type="form-select" class="form-control" id="orderCustomerId">
-                        <option>0001</option>
-                        <option>0002</option>
-                        <option>0003</option>
-                    </select>
+                    <input type="number" class="form-control" id="orderCustomerId">
                 </div>
                 <div>
                     <label for="orderCustomerName" class="form-label">Customer Name</label>
-                    <input type="number" class="form-control" id="orderCustomerName">
+                    <input type="text" class="form-control" id="orderCustomerName">
 
                 </div>
                 <div>
                     <label for="orderCustomerAddress" class="form-label">Address</label>
-                    <input type="number" class="form-control" id="orderCustomerAddress">
+                    <input type="text" class="form-control" id="orderCustomerAddress">
                 </div>
                 <div>
                     <label for="orderCustomerSalary" class="form-label">Salary</label>
@@ -114,6 +110,7 @@
                 </div>
                 <dic class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-success" id="orderItemAdd">Add +</button>
+                    <button type="submit" class="btn btn-primary" id="orderItemUpdate">Update</button>
                 </dic>
             </div>
 
@@ -124,7 +121,7 @@
                 <hr>
                 <div>
                     <label class="form-label mt-3 d-flex justify-content-center">
-                        <h5>Total -</h5>
+                        <h5 id="orderTotal"></h5>
                     </label>
                 </div>
                 <div>
@@ -156,32 +153,7 @@
                     <th scope="col">Qty</th>
                 </tr>
                 </thead>
-                <tbody id="orderItem-tbl-body">
-                <tr>
-                    <td>0001</td>
-                    <td>kavishka</td>
-                    <td>5000</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>kavishka</td>
-                    <td>5000</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>kavishka</td>
-                    <td>5000</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>kavishka</td>
-                    <td>5000</td>
-                    <td>200</td>
-                </tr>
-                </tbody>
+                <tbody id="orderItem-tbl-body"></tbody>
             </table>
         </div>
     </div>
@@ -203,32 +175,7 @@
                     <th scope="col">Discount</th>
                 </tr>
                 </thead>
-                <tbody id="order-tbl-body">
-                <tr>
-                    <td>0001</td>
-                    <td>2023-08-19</td>
-                    <td>kavishka</td>
-                    <td>8000</td>
-                    <td>10000</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>0002</td>
-                    <td>2023-08-19</td>
-                    <td>kavishka</td>
-                    <td>8000</td>
-                    <td>10000</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>0003</td>
-                    <td>2023-08-19</td>
-                    <td>kavishka</td>
-                    <td>8000</td>
-                    <td>10000</td>
-                    <td>200</td>
-                </tr>
-                </tbody>
+                <tbody id="order-tbl-body"></tbody>
             </table>
         </div>
     </div>
@@ -280,32 +227,7 @@
                     <th scope="col">Qty</th>
                 </tr>
                 </thead>
-                <tbody id="item-tbl-body">
-                <tr>
-                    <td>0001</td>
-                    <td>ari pods</td>
-                    <td>120000</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>ari pods</td>
-                    <td>120000</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>ari pods</td>
-                    <td>120000</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>0001</td>
-                    <td>ari pods</td>
-                    <td>120000</td>
-                    <td>30</td>
-                </tr>
-                </tbody>
+                <tbody id="item-tbl-body"></tbody>
             </table>
         </div>
     </div>
@@ -357,32 +279,7 @@
                     <th scope="col">Salary</th>
                 </tr>
                 </thead>
-                <tbody id="customer-tbl-body">
-                <tr>
-                    <td>0001</td>
-                    <td>Thisara</td>
-                    <td>Moratuwa</td>
-                    <td>650000</td>
-                </tr>
-                <tr>
-                    <td>0002</td>
-                    <td>ushan</td>
-                    <td>Moratuwa</td>
-                    <td>650000</td>
-                </tr>
-                <tr>
-                    <td>0003</td>
-                    <td>kashmira</td>
-                    <td>Moratuwa</td>
-                    <td>650000</td>
-                </tr>
-                <tr>
-                    <td>0004</td>
-                    <td>perera</td>
-                    <td>Moratuwa</td>
-                    <td>650000</td>
-                </tr>
-                </tbody>
+                <tbody id="customer-tbl-body"></tbody>
             </table>
         </div>
     </div>
